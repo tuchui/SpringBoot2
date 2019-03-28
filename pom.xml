@@ -30,11 +30,27 @@
       <scope>test</scope>
     </dependency>
     <!--thymeleaf-->
+    <!--对servlet依赖-->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
     </dependency>
-
+    <!--添加jstl-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+    </dependency>
+    <dependency>
+      <!--添加tomcat-->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+    </dependency>
+    <dependency>
+      <!--添加jasper 可以将项目与tomcat分开-->
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+     <!-- <scope>provided</scope>-->
+    </dependency>
   </dependencies>
   <!--cmd启动jar包会出现没有主清单属性，构件maven插件解决此问题 -->
   <build>

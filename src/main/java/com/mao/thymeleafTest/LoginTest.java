@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginTest {
-    @RequestMapping("/")
+    @RequestMapping("/login")
     public String index(Model moel){
         System.out.println("Login Test index execute..");
         return "index";

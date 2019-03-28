@@ -134,3 +134,17 @@ spring.servlet.multipart.max-file-size=10Mb
 ##### 3 文件下载
 
 使用ResponseEntity类型
+
+使用Apache Commons FileUpload中的FileUtils 读取upload下的文件，并构建成ResponseEntity对象返回客户端
+
+##### 4 异常处理
+
+1 默认异常会被springboot捕获并跳转到error页面 ，若无则显示默认页面
+
+2 使用@ExecptionHandler 处理异常 ：
+
+当异常抛出时，该Controller类中 的 @ExceptionHandler注解会处理异常，而不会抛给Servlet容器
+
+3 父类Controller处理异常
+
+4 Advice处理异常 解决父类处理异常耦合过度问题

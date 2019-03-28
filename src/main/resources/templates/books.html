@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Spring Boot json开发测试</title>
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{css/bootstrap-theme.min.css}"/>
+<script type="text/javascript" th:src="@{js/jquery-1.11.0.min.js}"></script>
+<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		findBook();
+    })
+	function findBook() {
+		$.ajax("/findBook",{
+		    dataType:"json",
+			type:"post",
+			contentType:"application/json",
+			data:JSON.stringify({name:"springboot book"}),
+			async:true,
+			success:function (data) {
+				console.log(data);
+				$("#author").html(data.author);
+				$("#name").html(data.name);
+            },
+			error:function () {
+				alert("数据出错")
+            }
+		})
+    }
+</script>
+</head>
+<body>
+	<!-- .container 类用于固定宽度并支持响应式布局的容器。 -->
+	<div class="panel panel-primary">
+		<!-- 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局 -->
+		<div class="panel-primary">
+			<h3 class="panel-title">java对象转换json</h3>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<p>书名：<span id="name"></span></p>
+				<p>作者：<span id="author"></span></p>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

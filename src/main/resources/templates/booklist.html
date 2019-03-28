@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Spring Boot json开发测试</title>
+<link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{css/bootstrap-theme.min.css}"/>
+<script type="text/javascript" th:src="@{js/jquery-1.11.0.min.js}"></script>
+<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		findBook();
+    })
+	function findBook() {
+
+	    $.post("findBookList",null,function (data) {
+			$.each(data,function () {
+				var tr=$("<tr align='center'/>")
+				$("<td/>").html(this.name).appendTo(tr);
+				$("<td/>").html(this.author).appendTo(tr);
+				$("#booktable").append(tr);
+            })
+        },"json")
+
+    }
+</script>
+</head>
+<body>
+	<!-- .container 类用于固定宽度并支持响应式布局的容器。 -->
+	<div class="panel panel-primary">
+		<!-- 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局 -->
+		<div class="panel-primary">
+			<h3 class="panel-title">集合对象转换json</h3>
+		</div>
+	</div>
+	<div class="container">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-title">
+					<h3>book list</h3>
+				</div>
+
+				<div class="panel-body">
+					<div class="table table-responsive">
+						<table class="table table-bordered table-hover" id="booktable">
+							<thead>
+								<tr>
+									<th class="text-center">name</th>
+									<th class="text-center">author</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

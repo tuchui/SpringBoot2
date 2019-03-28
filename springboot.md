@@ -99,5 +99,38 @@ web相关的自动配置支持保存在Spring-boot-autoconfigure.jar中
 - ServerPropertiesAutoConfiguration和ServerProperties
 - WebMvcAutoConfiguration 和WebMvcProperties 
 
+##### 2 文件上传
+
+文件上传必须为post请求且 enctype 设置为 multipart/form-data
+
+SpringMVC 直接提供了MultipartReslover 。此技术使用了Apache Commons FileUpload实现
+
+SpringBoot集成了SpringMVC，所有更加简单
+
+```java
+ String filePath=  req.getServletContext().getRealPath("/upload/");
+        System.out.println("filePath: "+filePath);
+        //上传文件名
+        String fileName=file.getOriginalFilename();
+        //创建目录
+        File newFilePath=new File(filePath,fileName);
+        if(!newFilePath.getParentFile().exists()){
+              newFilePath.getParentFile().mkdirs();
+        }
+        //将上传文件保存
+        file.transferTo(new File(filePath+File.pathSeparator+fileName));
+```
+
+默认文件大小1M，需设置大小
+
+```properties
+#设置文件上传大小
+spring.servlet.multipart.max-request-size=10Mb
+spring.servlet.multipart.max-file-size=10Mb
+```
 
 
+
+##### 3 文件下载
+
+使用ResponseEntity类型

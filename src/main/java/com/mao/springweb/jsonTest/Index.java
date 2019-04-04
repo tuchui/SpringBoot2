@@ -1,4 +1,4 @@
-package com.mao.jsonTest;
+package com.mao.springweb.jsonTest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.mao.jsonTest;
+package com.mao.springweb.jsonTest;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.mao.exceptionTest;
+package com.mao.springweb.exceptionTest;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

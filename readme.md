@@ -148,3 +148,61 @@ spring.servlet.multipart.max-file-size=10Mb
 3 父类Controller处理异常
 
 4 Advice处理异常 解决父类处理异常耦合过度问题
+
+#### 三 SpringBoot 数据库访问
+
+##### 1 JPA ,Spring Data JPA 概念
+
+数据库为关系型，而与面向对象的理念不符，于是衍生ORM框架。
+
+ORM框架作用：把持久化对象保存、修改等操作转换成对数据库的操作。
+
+**ORM框架简介**
+
+Hibernate框架
+
+JPA是官方提出的JAVA持久化规范，Herbinate需遵循JPA规范
+
+Spring Data 是Spring简化数据库访问的一个子项目
+
+Spring Data JPA 简化JPA写法，实现对数据库访问和操作
+
+##### 2 Spring Data JPA
+
+###### 2.1 Spring Data 核心数据访问接口
+
+- 基本的增删改查接口
+
+CrudRepository<T,ID extends Serializable>
+
+- 分页与排序接口
+
+PagingAndSortingRepository<T, ID extends Serializable>
+
+Iterable <T> findAll(Sort sort) : 按照指定排序对象规则查询实体对象数据
+
+Page< T > findAll(Pageable page):分页查询实体对象，包含排序
+
+###### 2.2 Spring Data JPA 开发
+
+spring data jpa 只需要数据访问层接口实现 JpaRepository接口即可 。
+
+JpaRepository也继承了 PagingAndSortingRepository接口
+
+JpaRepository 是基于 JPA的 Repository 接口
+
+- 简单条件查询
+
+- 关联查询 (" _ ")  和 @Query查询
+
+  使用  JPQL 语句 
+
+  使用@Modify 和@Query 执行更新查询操作
+
+  出错：
+
+```xml
+Consider injecting the bean as one of its interfaces or forcing the use of CGLib-based proxies by setting proxyTargetClass=true on @EnableAsync and/or @EnableCaching.
+
+```
+
